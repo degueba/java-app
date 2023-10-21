@@ -1,11 +1,13 @@
 package com.infnet.appvenda.model.domain;
 
-enum GameMode {
-	One, 
-	Two
-}
+
 
 public class Game extends Produto {
+	public enum GameMode {
+		One, 
+		Two
+	}
+	
 	private String nome;
 	private String categoria;
 	private Enum<GameMode> gameMode = GameMode.One; 

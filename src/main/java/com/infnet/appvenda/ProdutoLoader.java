@@ -11,6 +11,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import com.infnet.appvenda.model.domain.Game;
+import com.infnet.appvenda.model.domain.Game.GameMode;
 import com.infnet.appvenda.model.domain.Mobilia;
 import com.infnet.appvenda.model.domain.Produto;
 import com.infnet.appvenda.model.domain.Vendedor;
@@ -38,16 +40,30 @@ public class ProdutoLoader implements ApplicationRunner {
 		
 		while(linha != null) {
 			Mobilia mobilia = new Mobilia();
+			Game game = new Game();
 			
 			String[] produtos = linha.split(";");
 			
 			campos = linha.split(";"); 
-			mobilia.setCodigo(Integer.parseInt(produtos[0]));
-			mobilia.setDescricao("Este produto e " + produtos[1]);
-			mobilia.setEstoque(Integer.parseInt(produtos[5]) == 1 ? true : false);
-			mobilia.setPreco(Float.parseFloat(produtos[4]));
 			
-			produtoService.incluir(mobilia);
+			switch(campos[6]) {
+				case "Mobilia":
+					mobilia.setCodigo(Integer.parseInt(produtos[0]));
+					mobilia.setDescricao("Este produto e " + produtos[1]);
+					mobilia.setEstoque(Integer.parseInt(produtos[5]) == 1 ? true : false);
+					mobilia.setPreco(Float.parseFloat(produtos[4]));
+					produtoService.incluir(mobilia);
+					break;
+				case "Game":
+					game.setCodigo(Integer.parseInt(produtos[0]));
+					game.setDescricao("Este produto e " + produtos[1]);
+					game.setEstoque(Integer.parseInt(produtos[5]) == 1 ? true : false);
+					game.setPreco(Float.parseFloat(produtos[4]));
+					game.setNome(produtos[1]);
+					game.setGameMode(GameMode.valueOf(produtos[3]));
+					
+					produtoService.incluir(game);
+			}
 			
 			linha = leitura.readLine();
 		}
