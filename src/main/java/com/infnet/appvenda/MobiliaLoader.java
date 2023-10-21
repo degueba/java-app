@@ -37,6 +37,7 @@ public class MobiliaLoader implements ApplicationRunner {
 			campos = linha.split(";"); 
 			mobilia.setNome(campos[0]);
 			mobilia.setCor(campos[3]);
+			mobilia.setPreco(Float.valueOf(campos[4]));
 			
 			mobiliaService.incluir(mobilia);
 			

@@ -49,18 +49,21 @@ public class ProdutoLoader implements ApplicationRunner {
 			switch(campos[6]) {
 				case "Mobilia":
 					mobilia.setCodigo(Integer.parseInt(produtos[0]));
+					mobilia.setNome(campos[0]);
 					mobilia.setDescricao("Este produto e " + produtos[1]);
 					mobilia.setEstoque(Integer.parseInt(produtos[5]) == 1 ? true : false);
+					mobilia.setCor(campos[3]);
 					mobilia.setPreco(Float.parseFloat(produtos[4]));
 					produtoService.incluir(mobilia);
 					break;
 				case "Game":
 					game.setCodigo(Integer.parseInt(produtos[0]));
+					game.setNome(produtos[1]);
 					game.setDescricao("Este produto e " + produtos[1]);
 					game.setEstoque(Integer.parseInt(produtos[5]) == 1 ? true : false);
-					game.setPreco(Float.parseFloat(produtos[4]));
-					game.setNome(produtos[1]);
+					game.setCategoria(produtos[2]);
 					game.setGameMode(GameMode.valueOf(produtos[3]));
+					game.setPreco(Float.parseFloat(produtos[4]));
 					
 					produtoService.incluir(game);
 			}
