@@ -2,9 +2,6 @@ package com.infnet.appvenda;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -15,9 +12,8 @@ import com.infnet.appvenda.model.domain.Game;
 import com.infnet.appvenda.model.domain.Game.GameMode;
 import com.infnet.appvenda.model.domain.Mobilia;
 import com.infnet.appvenda.model.domain.Produto;
-import com.infnet.appvenda.model.domain.Vendedor;
 import com.infnet.appvenda.model.service.ProdutoService;
-import com.infnet.appvenda.model.service.VendedorService;
+
 
 @Component
 public class ProdutoLoader implements ApplicationRunner {

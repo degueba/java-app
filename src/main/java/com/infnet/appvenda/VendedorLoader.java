@@ -2,9 +2,6 @@ package com.infnet.appvenda;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;

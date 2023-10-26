@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.infnet.appvenda.model.domain.Game;
-import com.infnet.appvenda.model.domain.Vendedor;
+
 
 @Service
 public class GameService {
