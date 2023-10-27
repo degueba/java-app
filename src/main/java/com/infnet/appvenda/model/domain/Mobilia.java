@@ -1,5 +1,10 @@
 package com.infnet.appvenda.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TMobilia")
 public class Mobilia extends Produto {
 	private String nome;
 	private String categoria;

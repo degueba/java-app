@@ -1,7 +1,10 @@
 package com.infnet.appvenda.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-
+@Entity
+@Table(name = "TGame")
 public class Game extends Produto {
 	public enum GameMode {
 		One, 

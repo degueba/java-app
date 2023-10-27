@@ -3,7 +3,6 @@ package com.infnet.appvenda;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.infnet.appvenda.model.domain.Game;
 import com.infnet.appvenda.model.domain.Game.GameMode;
+import com.infnet.appvenda.model.domain.Vendedor;
 import com.infnet.appvenda.model.service.GameService;
 
 @Component
@@ -40,6 +40,11 @@ public class GameLoader implements ApplicationRunner {
 			game.setCategoria(campos[2]);
 			game.setPreco(Float.valueOf(campos[4]));
 			game.setGameMode(GameMode.valueOf(campos[3]));
+			
+			Vendedor vendedor = new Vendedor();
+			vendedor.setId(Integer.valueOf(campos[6]));
+			
+			game.setVendedor(vendedor);
 			
 			gameService.incluir(game);
 			

@@ -4,22 +4,27 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import com.infnet.appvenda.model.domain.Mobilia;
+import com.infnet.appvenda.model.repository.MobiliaRepository;
 
 
 @Service
 public class MobiliaService {
-	private Map<String, Mobilia> mapaMobilia = new HashMap<String, Mobilia>();
+	
+	@Autowired
+	private MobiliaRepository mobiliaRepository;
+	
 	
 	public void incluir(Mobilia mobilia) {
-		mapaMobilia.put(mobilia.getNome(), mobilia);
+		mobiliaRepository.save(mobilia);
 	}
 	
 	public Collection<Mobilia> obterLista(){
-		return mapaMobilia.values();
+		return (Collection<Mobilia>) mobiliaRepository.findAll();
 	}
 	
 }

@@ -4,21 +4,25 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.infnet.appvenda.model.domain.Game;
+import com.infnet.appvenda.model.repository.GameRepository;
 
 
 @Service
 public class GameService {
-	private Map<String, Game> mapaGame = new HashMap<String, Game>();
+	@Autowired
+	private GameRepository gameRepository;
+	
 	
 	public void incluir(Game game) {
-		mapaGame.put(game.getNome(), game);
+		gameRepository.save(game);
 	}
 	
 	public Collection<Game> obterLista(){
-		return mapaGame.values();
+		return (Collection<Game>) gameRepository.findAll();
 	}
 	
 }

@@ -10,6 +10,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import com.infnet.appvenda.model.domain.Mobilia;
+import com.infnet.appvenda.model.domain.Vendedor;
 import com.infnet.appvenda.model.service.MobiliaService;
 
 @Component
@@ -38,6 +39,11 @@ public class MobiliaLoader implements ApplicationRunner {
 			mobilia.setNome(campos[0]);
 			mobilia.setCor(campos[3]);
 			mobilia.setPreco(Float.valueOf(campos[4]));
+			
+			Vendedor vendedor = new Vendedor();
+			vendedor.setId(Integer.valueOf(campos[6]));
+			
+			mobilia.setVendedor(vendedor);
 			
 			mobiliaService.incluir(mobilia);
 			

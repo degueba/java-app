@@ -2,13 +2,13 @@ package com.infnet.appvenda.model.domain;
 
 import java.util.List;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 
 
@@ -22,12 +22,22 @@ public class Vendedor {
 	private String cpf;
 	private String email;
 	
-	@Transient
+	@OneToMany
+	@JoinColumn(name = "idVendedor")
 	private List<Produto> produtos;
 
 	@Override
 	public String toString() {
-		return String.format("%s - %s - %s", nome, cpf, email);
+		return String.format("%d - %s - %s - %s - %d", 
+				id, nome, cpf, email, produtos.size());
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -53,6 +63,8 @@ public class Vendedor {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	
 
 	public List<Produto> getProdutos() {
 		return produtos;

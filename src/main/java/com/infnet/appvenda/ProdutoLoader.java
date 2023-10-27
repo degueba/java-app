@@ -12,6 +12,7 @@ import com.infnet.appvenda.model.domain.Game;
 import com.infnet.appvenda.model.domain.Game.GameMode;
 import com.infnet.appvenda.model.domain.Mobilia;
 import com.infnet.appvenda.model.domain.Produto;
+import com.infnet.appvenda.model.domain.Vendedor;
 import com.infnet.appvenda.model.service.ProdutoService;
 
 
@@ -33,6 +34,7 @@ public class ProdutoLoader implements ApplicationRunner {
 		
 		String[] campos = null;
 		
+		Vendedor vendedor = new Vendedor();
 		
 		while(linha != null) {
 			Mobilia mobilia = new Mobilia();
@@ -42,6 +44,7 @@ public class ProdutoLoader implements ApplicationRunner {
 			
 			campos = linha.split(";"); 
 			
+			
 			switch(campos[6]) {
 				case "Mobilia":
 					mobilia.setCodigo(Integer.parseInt(produtos[0]));
@@ -50,6 +53,10 @@ public class ProdutoLoader implements ApplicationRunner {
 					mobilia.setEstoque(Integer.parseInt(produtos[5]) == 1 ? true : false);
 					mobilia.setCor(campos[3]);
 					mobilia.setPreco(Float.parseFloat(produtos[4]));
+					
+					vendedor.setId(Integer.valueOf(produtos[7]));
+					mobilia.setVendedor(vendedor);
+					
 					produtoService.incluir(mobilia);
 					break;
 				case "Game":
@@ -60,6 +67,9 @@ public class ProdutoLoader implements ApplicationRunner {
 					game.setCategoria(produtos[2]);
 					game.setGameMode(GameMode.valueOf(produtos[3]));
 					game.setPreco(Float.parseFloat(produtos[4]));
+					
+					vendedor.setId(Integer.valueOf(produtos[7]));
+					game.setVendedor(vendedor);
 					
 					produtoService.incluir(game);
 			}
@@ -72,6 +82,16 @@ public class ProdutoLoader implements ApplicationRunner {
 			System.out.println("[Produto]: " + produto);
 		}
 		
+		
+		System.out.println("[Produto do Vendedor  "  + vendedor.getId());
+		for(Produto produto: produtoService.obterLista(vendedor.getId())) {
+			System.out.println("[Produto]: " + produto);
+		}
+		
+		
+		for(Produto produto: produtoService.obterLista(vendedor)) {
+			System.out.println("[Produto]: " + produto);
+		}
 		
 		
 		leitura.close();

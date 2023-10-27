@@ -1,11 +1,41 @@
 package com.infnet.appvenda.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TProduto")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Produto {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
 	private String descricao;
 	private Integer codigo;
 	private Float preco;
 	private Boolean estoque;
 	
+	@ManyToOne
+	@JoinColumn(name = "idVendedor")
+	private Vendedor vendedor;
+
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getDescricao() {
 		return descricao;
 	}
@@ -36,5 +66,13 @@ public class Produto {
 
 	public void setEstoque(Boolean estoque) {
 		this.estoque = estoque;
-	}	
+	}
+	
+	public Vendedor getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
+	}
 }
