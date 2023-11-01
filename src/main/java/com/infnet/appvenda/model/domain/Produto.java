@@ -19,7 +19,7 @@ public class Produto {
 	private Integer id;
 
 	private String descricao;
-	private int codigo;
+	private Integer codigo;
 	private Float preco;
 	private Boolean estoque;
 
@@ -52,7 +52,7 @@ public class Produto {
 		return codigo;
 	}
 	
-	public void setCodigo(int codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 	

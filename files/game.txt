@@ -1,3 +1,4 @@
 1;Game of Thrones;acao;One;20;true;1
 2;God of War;acao;One;15;true;1
 3;Pokemon;aventura;One;25;true;1
+4;Amazon;aventura;One;25;true;1
