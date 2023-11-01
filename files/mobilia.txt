@@ -1,3 +1,5 @@
-1;Sofa Conforto dos Sonhos;sofa;marrom;1900;1;1;
-2;Cadeira Gamer 100WPower;cadeira;azul;800;1;1;
+122;Cadeira1;sofa;marrom;1900;1;1
+33;Cadeira2;cadeira;azul;800;1;1
+445;Cadeira3;cadeira;azul;800;1;1
+
 

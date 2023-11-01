@@ -1,44 +1,44 @@
-package com.infnet.appvenda;
+package com.infnet.appvenda.model.domain;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import com.infnet.appvenda.model.domain.Mobilia;
 import com.infnet.appvenda.model.domain.Vendedor;
 import com.infnet.appvenda.model.service.MobiliaService;
 
+@Order(3)
 @Component
 public class MobiliaLoader implements ApplicationRunner {
 	
 	@Autowired
 	private MobiliaService mobiliaService;
 
-	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
-		FileReader file = new FileReader("files/mobilia.txt");
+		FileReader file = new FileReader("files/mobilia.txt");		
 		BufferedReader leitura = new BufferedReader(file);
 		
-	
 		String linha = leitura.readLine();
-		
+
 		String[] campos = null;
-		
-		
+				
 		while(linha != null) {
-			Mobilia mobilia = new Mobilia();
 			
-			campos = linha.split(";"); 
-			mobilia.setNome(campos[0]);
+			campos = linha.split(";");
+			
+			Mobilia mobilia = new Mobilia();
+
+			mobilia.setCodigo(Integer.valueOf(campos[0]));
+			mobilia.setDescricao(campos[1]);
+			mobilia.setCategoria(campos[2]);
 			mobilia.setCor(campos[3]);
-			mobilia.setPreco(Float.valueOf(campos[4]));
 			
 			Vendedor vendedor = new Vendedor();
 			vendedor.setId(Integer.valueOf(campos[6]));
@@ -49,15 +49,11 @@ public class MobiliaLoader implements ApplicationRunner {
 			
 			linha = leitura.readLine();
 		}
-		
-		
+
 		for(Mobilia mobilia: mobiliaService.obterLista()) {
-			System.out.println("[Mobilia]: " + mobilia);
+			System.out.println("[Alimentício] " + mobilia);			
 		}
-		
-		
-		
+
 		leitura.close();
 	}
-
 }

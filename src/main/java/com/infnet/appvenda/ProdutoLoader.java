@@ -6,6 +6,7 @@ import java.io.FileReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import com.infnet.appvenda.model.domain.Game;
@@ -15,7 +16,7 @@ import com.infnet.appvenda.model.domain.Produto;
 import com.infnet.appvenda.model.domain.Vendedor;
 import com.infnet.appvenda.model.service.ProdutoService;
 
-
+@Order(2)
 @Component
 public class ProdutoLoader implements ApplicationRunner {
 	
@@ -50,7 +51,7 @@ public class ProdutoLoader implements ApplicationRunner {
 					mobilia.setCodigo(Integer.parseInt(produtos[0]));
 					mobilia.setNome(campos[0]);
 					mobilia.setDescricao("Este produto e " + produtos[1]);
-					mobilia.setEstoque(Integer.parseInt(produtos[5]) == 1 ? true : false);
+					mobilia.setEstoque(Boolean.valueOf(produtos[5]));
 					mobilia.setCor(campos[3]);
 					mobilia.setPreco(Float.parseFloat(produtos[4]));
 					
@@ -63,7 +64,7 @@ public class ProdutoLoader implements ApplicationRunner {
 					game.setCodigo(Integer.parseInt(produtos[0]));
 					game.setNome(produtos[1]);
 					game.setDescricao("Este produto e " + produtos[1]);
-					game.setEstoque(Integer.parseInt(produtos[5]) == 1 ? true : false);
+					game.setEstoque(Boolean.valueOf(produtos[5]));
 					game.setCategoria(produtos[2]);
 					game.setGameMode(GameMode.valueOf(produtos[3]));
 					game.setPreco(Float.parseFloat(produtos[4]));

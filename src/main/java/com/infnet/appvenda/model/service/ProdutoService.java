@@ -29,4 +29,9 @@ public class ProdutoService {
 	public Collection<Produto> obterLista(Integer id){
 		return (Collection<Produto>) produtoRepository.obterLista(id);
 	}	
+	
+	
+	public long obterQtde() {
+		return produtoRepository.count();
+	}
 }

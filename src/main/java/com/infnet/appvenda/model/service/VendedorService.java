@@ -24,4 +24,8 @@ public class VendedorService {
 		return (Collection<Vendedor>) vendedorRepository.findAll();
 	}
 	
+	
+	public long obterQtde() {
+		return vendedorRepository.count();
+	}
 }

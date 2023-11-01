@@ -3,6 +3,7 @@ package com.infnet.appvenda.model.domain;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class Vendedor {
 	private String cpf;
 	private String email;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idVendedor")
 	private List<Produto> produtos;
 

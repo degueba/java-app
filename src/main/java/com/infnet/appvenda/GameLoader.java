@@ -6,6 +6,7 @@ import java.io.FileReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import com.infnet.appvenda.model.domain.Game;
@@ -13,6 +14,7 @@ import com.infnet.appvenda.model.domain.Game.GameMode;
 import com.infnet.appvenda.model.domain.Vendedor;
 import com.infnet.appvenda.model.service.GameService;
 
+@Order(4)
 @Component
 public class GameLoader implements ApplicationRunner {
 	

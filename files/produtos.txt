@@ -1,5 +1,4 @@
-1;Sofa Conforto dos Sonhos;sofa;marrom;1900;1;Mobilia;2
-2;Cadeira Gamer 100WPower;cadeira;azul;800;1;Mobilia;2
-3;Game of Thrones;acao;One;20;1;Game;2
-4;God of War;acao;One;15;1;Game;2
-5;Pokemon;aventura;One;25;true;Game;2
+123;descricao 1;true;99;primeira caracteristica;true;A;1
+345;descricao 3;true;77;10;primeira marca;E;1
+234;descricao 2;false;88;segunda caracteristica;false;A;2
+456;descricao 4;true;66;20;segunda marca;E;3

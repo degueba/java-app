@@ -19,14 +19,18 @@ public class Produto {
 	private Integer id;
 
 	private String descricao;
-	private Integer codigo;
+	private int codigo;
 	private Float preco;
 	private Boolean estoque;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idVendedor")
 	private Vendedor vendedor;
 
+	@Override
+	public String toString() {
+		return String.format("%d - %s - %d - %.2f - %s", id, descricao, codigo, preco, estoque);
+	}
 
 	public Integer getId() {
 		return id;
@@ -44,14 +48,14 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public Integer getCodigo() {
+	public int getCodigo() {
 		return codigo;
 	}
-
-	public void setCodigo(Integer codigo) {
+	
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-
+	
 	public Float getPreco() {
 		return preco;
 	}
@@ -67,7 +71,7 @@ public class Produto {
 	public void setEstoque(Boolean estoque) {
 		this.estoque = estoque;
 	}
-	
+
 	public Vendedor getVendedor() {
 		return vendedor;
 	}

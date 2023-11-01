@@ -10,6 +10,7 @@ public class Mobilia extends Produto {
 	private String categoria;
 	private String cor;
 	
+
 	public String getNome() {
 		return nome;
 	}

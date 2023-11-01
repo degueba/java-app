@@ -1,8 +1,6 @@
 package com.infnet.appvenda.model.service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +24,8 @@ public class MobiliaService {
 	public Collection<Mobilia> obterLista(){
 		return (Collection<Mobilia>) mobiliaRepository.findAll();
 	}
-	
+
+	public long obterQtde() {
+		return mobiliaRepository.count();
+	}
 }
