@@ -1,4 +1,4 @@
-package com.infnet.appvenda.model.domain;
+package com.infnet.appvenda;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,6 +9,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import com.infnet.appvenda.model.domain.Mobilia;
 import com.infnet.appvenda.model.domain.Vendedor;
 import com.infnet.appvenda.model.service.MobiliaService;
 

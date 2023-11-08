@@ -1,6 +1,5 @@
 package com.infnet.appvenda.controller;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,6 @@ import com.infnet.appvenda.model.service.ProdutoService;
 import com.infnet.appvenda.model.service.VendedorService;
 
 @Controller
-@Transactional
 public class AppController {
 	
 	@Autowired
@@ -34,38 +32,20 @@ public class AppController {
 		
 		model.addAttribute("qtdeVendedor", vendedorService.obterQtde());
 		model.addAttribute("qtdeProduto", produtoService.obterQtde());
-		model.addAttribute("qtdeGames", gameService.obterQtde());
+		model.addAttribute("qtdeGame", gameService.obterQtde());
 		model.addAttribute("qtdeMobilia", mobiliaService.obterQtde());
 		
 		return "home";
 	}
 	
-	@GetMapping(value = "/vendedor/lista")
-	public String obterVendedorLista(Model model) {
-		model.addAttribute("listagem", vendedorService.obterLista());
-		
-		return "redirect:/";
-	}
-	
-	
-	@GetMapping(value = "/produto/lista")
-	public String obterProdutoLista(Model model) {
-		model.addAttribute("listagem", produtoService.obterLista());
-		
-		return "redirect:/";
-	}
+
 	
 	@GetMapping(value = "/game/lista")
 	public String obterGameLista(Model model) {
+		model.addAttribute("titulo", "Games:");
 		model.addAttribute("listagem", gameService.obterLista());
 		
-		return "redirect:/";
+		return showHome(model);
 	}
 	
-	@GetMapping(value = "/mobilia/lista")
-	public String obterMobiliaLista(Model model) {
-		model.addAttribute("listagem", mobiliaService.obterLista());
-		
-		return "redirect:/";
-	}
 }

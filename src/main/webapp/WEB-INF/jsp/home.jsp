@@ -31,10 +31,10 @@
 	</nav>
 	
 	<div class="container mt-3">
-		<span class="badge rounded-pill bg-primary">Vendedor</span>
-	  	<span class="badge rounded-pill bg-secondary">Produto</span>
-	  	<span class="badge rounded-pill bg-success">Game</span>
-	  	<span class="badge rounded-pill bg-danger">Mobilia</span>
+		<span class="badge rounded-pill bg-primary">Vendedor: ${qtdeVendedor}</span>
+	  	<span class="badge rounded-pill bg-secondary">Produto: ${qtdeProduto}</span>
+	  	<span class="badge rounded-pill bg-success">Game: ${qtdeGame}</span>
+	  	<span class="badge rounded-pill bg-danger">Mobilia ${qtdeMobilia}</span>
   		
   		<c:if test="${not empty listagem}">
 			<h2>AppVenda</h2>
@@ -42,13 +42,17 @@
 			<table class="table">
 				<thead class="table-dark">
 					<tr>
-					  <th>título</th>
+					  <th>${título}</th>
+					  <th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="item" items="${listagem}">
 						<tr>
 						  <td>${item}</td>
+						  <td>
+						  	<a href="/${rota}/${item.id}/excluir">excluir</a>
+						  </td>
 						</tr>
 					</c:forEach>
 				</tbody>

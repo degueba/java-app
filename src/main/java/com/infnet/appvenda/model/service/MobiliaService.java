@@ -28,4 +28,8 @@ public class MobiliaService {
 	public long obterQtde() {
 		return mobiliaRepository.count();
 	}
+	
+	public void excluir(Integer id) {
+		mobiliaRepository.deleteById(id);
+	}
 }
