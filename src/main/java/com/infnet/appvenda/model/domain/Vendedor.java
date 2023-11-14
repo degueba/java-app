@@ -33,7 +33,7 @@ public class Vendedor {
 	@Size(min =2, max = 50)
 	private String email;
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idVendedor")
 	private List<Produto> produtos;
 	
@@ -43,8 +43,8 @@ public class Vendedor {
 
 	@Override
 	public String toString() {
-		return String.format("%d - %s - %s - %s - %d", 
-				id, nome, cpf, email, produtos != null ? produtos.size() : 0);
+		return String.format("%d - %s - %s - %s - %d - %s", 
+				id, nome, cpf, email, produtos != null ? produtos.size() : 0, endereco);
 	}
 	
 	public Integer getId() {

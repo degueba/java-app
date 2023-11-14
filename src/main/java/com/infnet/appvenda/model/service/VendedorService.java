@@ -1,5 +1,5 @@
 package com.infnet.appvenda.model.service;
-
+import org.springframework.data.domain.Sort;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,9 @@ public class VendedorService {
 	@Autowired
 	private IEnderecoClient enderecoClient;
 	
+	public Vendedor pesquisar(String cpf) {
+		return vendedorRepository.findByCpf(cpf);
+	}
 	
 	public void incluir(Vendedor vendedor) {
 		String cep = vendedor.getEndereco().getCep();
@@ -29,8 +32,8 @@ public class VendedorService {
 		vendedorRepository.save(vendedor);
 	}
 	
-	public Collection<Vendedor> obterLista(){		
-		return (Collection<Vendedor>) vendedorRepository.findAll();
+	public Collection<Vendedor> obterLista(){	
+		return (Collection<Vendedor>) vendedorRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
 	}
 	
 	

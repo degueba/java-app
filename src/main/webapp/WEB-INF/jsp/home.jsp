@@ -27,6 +27,13 @@
 	        <a class="nav-link" href="/mobilia/lista">Mobilia</a>
 	      </li>
 	    </ul>
+	    <c:if test="${not empty listagem}">
+			<form class="d-flex" action="/${rota}/pesquisar">
+				<input class="form-control me-2" type="text" name="campoBusca"
+					placeholder="Search">
+				<button class="btn btn-primary" type="submit">Search</button>
+			</form>
+		</c:if>
 	  </div>
 	</nav>
 	
@@ -57,6 +64,30 @@
 					</c:forEach>
 				</tbody>
 			</table>
+		</c:if>
+		<c:if test="${not empty informacoes}">
+			<hr>
+			<table class="table">
+				<thead class="table-dark">
+					<tr>
+						<th>Informações:</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="item" items="${informacoes}">
+						<tr>
+							<td>${item}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</c:if>
+
+		<c:if test="${not empty objeto}">
+			<hr>
+			<div class="alert alert-success">
+				<strong>Sucesso!</strong> ${objeto}
+			</div>
 		</c:if>
 	</div>
 </body>
